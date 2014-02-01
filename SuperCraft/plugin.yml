@@ -1,4 +1,8 @@
 name: SuperCraft
 main: main.Main
-version: 0.0.3
+version: 0.0.4
 author: ksbdude
+commands:
+   SuperCraft:
+      description: Reloads SuperCraft Config
+      usage: /<command> [player]

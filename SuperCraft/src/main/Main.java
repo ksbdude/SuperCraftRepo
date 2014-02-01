@@ -1,6 +1,9 @@
 package main;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -89,4 +92,18 @@ public class Main extends JavaPlugin {
 		
 		reloadConfig();
 	}
+	
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+		if(cmd.getName().equalsIgnoreCase("supercraft") && sender.isOp()){ 
+			sender.sendMessage("SuperCraft Config Reloaded");
+			reloadConfig();
+			return true;
+		}
+		else if(cmd.getName().equalsIgnoreCase("supercraft") && !sender.isOp()){ 
+			sender.sendMessage(ChatColor.RED + "You MUST be an op to preform that command!");
+			return true;
+		}
+		return false; 
+	}
+	
 }
