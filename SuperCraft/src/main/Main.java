@@ -17,7 +17,7 @@ public class Main extends JavaPlugin {
 		config.addDefault("chainChestplate", Boolean.valueOf(true));
 		config.addDefault("chainHelmet", Boolean.valueOf(true));
 		config.addDefault("mossyCobble", Boolean.valueOf(true));
-		config.addDefault("sponge", Boolean.valueOf(true));
+		config.addDefault("packedIce", Boolean.valueOf(true));
 
 		config.options().copyDefaults(true);
 		saveConfig();
@@ -79,6 +79,14 @@ public class Main extends JavaPlugin {
 			mossyCobble.setIngredient('S', Material.VINE);
 			getServer().addRecipe(mossyCobble);
 		}
+		if (getConfig().getBoolean("packedIce", true)) {
+			ShapedRecipe packedIce = new ShapedRecipe(new ItemStack(
+					Material.PACKED_ICE, 1));
+			packedIce.shape(new String[] { "III", "III", "III" });
+			packedIce.setIngredient('I', Material.ICE);
+			getServer().addRecipe(packedIce);
+		}
+		
 		reloadConfig();
 	}
 }
